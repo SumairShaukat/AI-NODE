@@ -1,9 +1,22 @@
 import 'dotenv/config'
-import OpenAi from 'openapi'
+import OpenAI from 'openai' 
 
-const AI =  new OpenAi();
+const AI =  new OpenAI();
 
 
-AI.chat.completions.create({
-    model: ''
+const answers = AI.chat.completions.create({
+    model: 'gpt-3.5-turbo',
+    message: [
+        {
+            role: 'system',
+            content: 'You are an AI assistance, answer any question to the best of you abiliy'
+        },
+        {
+            role: 'user',
+            content: 'Hi! My name is  sumair'
+        }
+    ]
 })
+console.log(answers);
+
+//how to get propts for chatgpt api
